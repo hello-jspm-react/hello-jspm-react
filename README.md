@@ -28,8 +28,6 @@ $ sudo npm install -g gulp
 
 # 1. Create basic **npm**/**jspm** project
 
-I prefer to edit package.json myself
-
 ## 1.1. Create basic **npm** project
 
 ```shell

@@ -430,7 +430,8 @@ config.paths.src.main = path.join(config.paths.src.base, 'client', 'main');
 config.paths.src.systemjs = ['jspm_packages/system.js'];
 
 config.paths.dist.base = 'dist';
-config.paths.dist.js = path.join(config.paths.dist.base, 'js');
+config.paths.dist.public = path.join(config.paths.dist.base, 'public');
+config.paths.dist.js = path.join(config.paths.dist.public, 'js');
 config.paths.dist.app = 'app.js';
 
 export default config;
@@ -571,7 +572,8 @@ config.paths.src.systemjs = ['jspm_packages/system.js'];
 config.paths.src.html = 'index.html';
 
 config.paths.dist.base = 'dist';
-config.paths.dist.js = path.join(config.paths.dist.base, 'js');
+config.paths.dist.public = path.join(config.paths.dist.base, 'public');
+config.paths.dist.js = path.join(config.paths.dist.public, 'js');
 config.paths.dist.app = 'app.js';
 
 config.htmlReplace = {
@@ -593,7 +595,7 @@ import config from './config';
 export function dist() {
   return gulp.src(config.paths.src.html)
     .pipe(htmlreplace(config.htmlReplace))
-    .pipe(gulp.dest(config.paths.dist.html));
+    .pipe(gulp.dest(config.paths.dist.public));
 }
 ```
 
@@ -673,7 +675,8 @@ config.paths.src.libs = 'react + react-dom';
 config.paths.src.libsRev = 'react - react-dom';
 
 config.paths.dist.base = 'dist';
-config.paths.dist.js = path.join(config.paths.dist.base, 'js');
+config.paths.dist.public = path.join(config.paths.dist.base, 'public');
+config.paths.dist.js = path.join(config.paths.dist.public, 'js');
 config.paths.dist.app = 'app.js';
 config.paths.dist.lib = 'lib.js';
 
@@ -728,7 +731,7 @@ config.ports = {
 ...
 export function serveDist() {
   const app = express();
-  app.use(express.static(config.paths.dist.base));
+  app.use(express.static(config.paths.dist.public));
   app.listen(config.ports.dist, () => {
     console.log('express listening on %s', config.ports.dist);
   });
